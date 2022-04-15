@@ -1,8 +1,10 @@
 import React, { useState, useEffect }from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Nav.css';
 
 function Nav() {
     const [show, handleShow] = useState(false);
+    const navigate = useNavigate();
 
     const transitionNavBar = () => {
         if(window.scrollY > 100) {
@@ -20,14 +22,16 @@ function Nav() {
   return (
     <div className={`nav ${ show && "nav_black"}`}>
         <div className='nav_contents'>
-            <img 
+            <img
+                onClick={() => navigate("/") }
                 className='nav_logo'
                 src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
                 alt=""
             />
-            <img 
+            <img
+                onClick={()=> navigate("/profile")}
                 className='nav_avatar'
-                src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/3D465FCD20497179704614ACF6E14542C4B0C86FBE891A691C66F9DB305C7F2F/scale?width=1200&aspectRatio=1.78&format=jpeg" 
+                src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
                 alt=""
             />
         </div>
