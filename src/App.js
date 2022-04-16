@@ -15,17 +15,19 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(userAuth => {
       if(userAuth) {
-        dispatch(login({
-          uid: userAuth.uid,
-          email: userAuth.email,
-        }))
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email,
+          }
+        ))
       } else {
-        dispatch(logout)
+        dispatch(logout());
       }
     })
 
     return unsubscribe;
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="app">
